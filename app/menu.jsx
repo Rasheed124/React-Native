@@ -50,7 +50,7 @@ export default function MenuScreen() {
               <Text style={styles.menuItemText}>{item.description}</Text>
             </View>
 
-            <Image source={MENU_IMAGES[item.id - 1]} />
+            <Image style={styles.menuImage} source={MENU_IMAGES[item.id - 1]} />
           </View>
         )}
       ></FlatList>
@@ -76,6 +76,7 @@ function createStyles(theme, colorScheme) {
     },
     footerComp: {
       marginHorizontal: "auto",
+      color: theme.text,
     },
     row: {
       flexDirection: "row",
@@ -108,6 +109,7 @@ function createStyles(theme, colorScheme) {
     menuImage: {
       width: 100,
       height: 100,
+      objectFit: "cover",
     },
   });
 }
