@@ -17,9 +17,15 @@ const App = () => {
         resizeMode="cover"
         style={styles.image}
       >
+
         <Text style={styles.text}>Coffe Shop</Text>
 
         {/* Pressabele (Button) for clicking - pass for events as the Links */}
+        <Link href="/menu" style={{ marginHorizontal: "auto",  }} asChild>
+          <Pressable style={styles.button}>
+            <Text style={styles.buttonText}>Menu </Text>
+          </Pressable>
+        </Link>
         <Link href="/contact" style={{ marginHorizontal: "auto" }} asChild>
           <Pressable style={styles.button}>
             <Text style={styles.buttonText}>Contact Us</Text>
@@ -64,6 +70,7 @@ const styles = StyleSheet.create({
   button: {
     height: 60,
     borderRadius: 20,
+    marginBottom: 10,
     fontWeight: "bold",
     textAlign: "center",
     padding: 6,
