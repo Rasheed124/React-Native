@@ -1,32 +1,37 @@
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import React from 'react'
-import { s, vs } from 'react-native-size-matters'
-import Entypo from '@expo/vector-icons/Entypo';
-
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import React from "react";
+import { s, vs } from "react-native-size-matters";
+import Entypo from "@expo/vector-icons/Entypo";
 
 interface PayMethodCardProps {
-  isSelected?: boolean
-  title: string
-  icon: React.ReactNode
-  onPress?: () => void
+  isSelected?: boolean;
+  title: string;
+  icon: React.ReactNode;
+  onPress?: () => void;
 }
 
-const PaymentCard = ({isSelected = false, title, icon, onPress} : PayMethodCardProps) => {
+const PaymentCard = ({
+  isSelected = false,
+  title,
+  icon,
+  onPress,
+}: PayMethodCardProps) => {
   return (
-     <TouchableOpacity onPress={onPress} style={{ width: s(85) }}>
-      {isSelected && <View style={styles.checkMarkContainer}>
-
-        <Entypo name="check" size={s(12)} color="#fff" />
-        </View>}
+    <TouchableOpacity onPress={onPress} style={{ width: s(85) }}>
+      {isSelected && (
+        <View style={styles.checkMarkContainer}>
+          <Entypo name="check" size={s(12)} color="#fff" />
+        </View>
+      )}
       <View style={[styles.card, isSelected && styles.selectedCardStyle]}>
         {icon}
       </View>
       <Text style={styles.label}>{title}</Text>
     </TouchableOpacity>
-  )
-}
+  );
+};
 
-export default PaymentCard
+export default PaymentCard;
 
 const styles = StyleSheet.create({
   card: {

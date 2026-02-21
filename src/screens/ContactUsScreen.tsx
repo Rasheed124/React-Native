@@ -14,8 +14,11 @@ import {
   AntDesign,
   FontAwesome5,
 } from "@expo/vector-icons";
+import { useRoute } from "@react-navigation/native";
 
 const ContactUsScreen = () => {
+  const { name, params } = useRoute();
+
   return (
     <>
       <View style={{ marginTop: vs(50), paddingHorizontal: s(16) }}>
@@ -24,7 +27,7 @@ const ContactUsScreen = () => {
           <UserAvatar />
         </View>
 
-        <Text style={styles.screenTitle}>Contact Us</Text>
+        <Text style={styles.screenTitle}>{name} Us</Text>
 
         <View style={styles.socialContainer}>
           <Text style={styles.socialTitle}>Social Media Platforms</Text>

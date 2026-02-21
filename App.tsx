@@ -22,14 +22,14 @@
 // });
 
 import { View } from 'react-native';
-import PaymentScreen from './src/screens/PaymentScreen';
+import MainStackNavigator from './src/components/MainStackNavigator';
+import { NavigationContainer } from '@react-navigation/native';
+import BottomNavs from './src/components/BottomTabs';
 
 export default function App() {
   return (
-    <View >
-      {/* <IntroScreen /> */}
-      {/* <HomeScreen /> */}
-      <PaymentScreen />
-    </View>
+    <NavigationContainer >
+       <BottomNavs />
+    </NavigationContainer>
   );
 }

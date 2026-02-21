@@ -1,11 +1,13 @@
-import { FlatList, StyleSheet, Text, View } from "react-native";
+import { Button, FlatList, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { s, vs } from "react-native-size-matters";
 import TopTabs from "../components/TopTabs";
 import MeditationCard from "../components/MeditationCard";
 import { dummyData } from "../data/data";
+import { useNavigation } from "@react-navigation/native";
 
 const HomeScreen = () => {
+  const navigation = useNavigation();
   return (
     <View
       style={{
@@ -33,6 +35,8 @@ const HomeScreen = () => {
       >
         Lorem Ipsum is simply dummy text
       </Text>
+
+      <Button onPress={() => navigation.navigate("Contact" , {name: "contact"})} title="Contact" />
 
       <TopTabs />
 

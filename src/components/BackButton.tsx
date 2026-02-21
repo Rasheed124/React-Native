@@ -1,15 +1,19 @@
 import React from "react";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
 
-
-import Entypo from '@expo/vector-icons/Entypo';
+import Entypo from "@expo/vector-icons/Entypo";
 import { s } from "react-native-size-matters";
+import { useNavigation } from "@react-navigation/native";
 
 const BackButton = () => {
+  const navigation = useNavigation();
   return (
-      <TouchableOpacity style={styles.button}>
-       <Entypo name="chevron-left" size={24} color="black" />
-      </TouchableOpacity>
+    <TouchableOpacity
+      onPress={() => navigation.navigate("Home")}
+      style={styles.button}
+    >
+      <Entypo name="chevron-left" size={24} color="black" />
+    </TouchableOpacity>
   );
 };
 
