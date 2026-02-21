@@ -18,7 +18,7 @@ import {
 const ContactUsScreen = () => {
   return (
     <>
-      <View style={{ marginTop: vs(50), paddingHorizontal: s(17) }}>
+      <View style={{ marginTop: vs(50), paddingHorizontal: s(16) }}>
         <View style={styles.header}>
           <BackButton />
           <UserAvatar />
@@ -71,8 +71,8 @@ const styles = StyleSheet.create({
     marginTop: vs(22),
   },
   socialTitle: {
-    fontSize: s(16),
-    fontWeight: "semibold",
+    fontSize: s(15),
+    fontWeight: "bold",
   },
   screenTitle: {
     fontSize: s(30),
