@@ -4,60 +4,52 @@ import UserAvatar from "../components/UserAvatar";
 import Header from "../components/Header";
 import { s, vs } from "react-native-size-matters";
 
-import Entypo from "@expo/vector-icons/Entypo";
 import WhatsApp, { SendIcon } from "../assets/icons";
+import BackButton from "../components/BackButton";
+import SocialSection from "../components/SocialSection";
+
+import {
+  FontAwesome,
+  Feather,
+  AntDesign,
+  FontAwesome5,
+} from "@expo/vector-icons";
 
 const ContactUsScreen = () => {
   return (
     <>
-      <View style={{ marginTop: vs(60), paddingHorizontal: s(17) }}>
-        <Header />
-        <Text style={{ fontSize: 30, fontWeight: "800", marginTop: vs(20) }}>
-          Contact Us
-        </Text>
+      <View style={{ marginTop: vs(50), paddingHorizontal: s(17) }}>
+        <View style={styles.header}>
+          <BackButton />
+          <UserAvatar />
+        </View>
 
-        <View
-          style={{
-            backgroundColor: "#ECF0F4",
-            padding: s(10),
-            marginTop: vs(5),
-          }}
-        >
-          <Text style={{ fontSize: 10, fontWeight: "800" }}>
-            Social Media Platforms
-          </Text>
+        <Text style={styles.screenTitle}>Contact Us</Text>
 
-          <View
-            style={{
-              flexDirection: "row",
-              alignItems: "center",
-              justifyContent: 'space-between',
-              marginTop: vs(5),
-            }}
-          >
-            <View
-              style={{
-                flexDirection: "row",
-                alignItems: "center",
-                gap: 10,
-                marginTop: vs(5),
-              }}
-            >
-              <TouchableOpacity style={styles.button}>
-                <WhatsApp />
-              </TouchableOpacity>
-
-              <Text
-                style={{ fontSize: 10, fontWeight: "500", color: "#8083A3" }}
-              >
-                WhatsApp
-              </Text>
-            </View>
-
-            <TouchableOpacity style={styles.buttonSend} >
-              <SendIcon />
-            </TouchableOpacity>
-          </View>
+        <View style={styles.socialContainer}>
+          <Text style={styles.socialTitle}>Social Media Platforms</Text>
+          <SocialSection
+            icon={<FontAwesome name="whatsapp" size={24} color="#178AD9" />}
+            title="What Up"
+          />
+          <SocialSection
+            icon={<Feather name="x" size={24} color="#178AD9" />}
+            title={"X"}
+          />
+          <SocialSection
+            icon={<AntDesign name="instagram" size={24} color="#178AD9" />}
+            title={"Instagram"}
+          />
+          <SocialSection
+            icon={
+              <FontAwesome name="snapchat-ghost" size={24} color="#178AD9" />
+            }
+            title={"snap chat"}
+          />
+          <SocialSection
+            icon={<FontAwesome5 name="tiktok" size={24} color="#178AD9" />}
+            title={"Tik Tok"}
+          />
         </View>
       </View>
     </>
@@ -67,22 +59,25 @@ const ContactUsScreen = () => {
 export default ContactUsScreen;
 
 const styles = StyleSheet.create({
-  button: {
-    width: s(35),
-    height: s(35),
-    borderRadius: s(16),
-    backgroundColor: "#E4E6E8",
-    // boxShadow: ''
-    justifyContent: "center",
-    alignItems: "center",
+  header: {
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
-  buttonSend: {
-    width: s(35),
-    height: s(35),
-    borderRadius: s(16),
-    backgroundColor: "#1077AF",
-    // boxShadow: ''
-    justifyContent: "center",
-    alignItems: "center",
+  socialContainer: {
+    backgroundColor: "#F5F5FA",
+    borderRadius: s(14),
+    paddingHorizontal: s(18),
+    paddingVertical: vs(15),
+    marginTop: vs(22),
+  },
+  socialTitle: {
+    fontSize: s(16),
+    fontWeight: "semibold",
+  },
+  screenTitle: {
+    fontSize: s(30),
+    fontWeight: "semibold",
+    marginTop: vs(20),
+    marginStart: s(19),
   },
 });
