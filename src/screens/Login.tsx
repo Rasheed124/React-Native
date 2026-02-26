@@ -11,7 +11,7 @@ import {
   StatusBar,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { vs } from "react-native-size-matters";
+import { s, vs } from "react-native-size-matters";
 
 const { width } = Dimensions.get("window");
 
@@ -120,7 +120,6 @@ const styles = StyleSheet.create({
     margin: vs(15),
     marginTop: vs(45),
     borderRadius: 14,
-
   },
   content: {
     flex: 1,
@@ -128,12 +127,13 @@ const styles = StyleSheet.create({
     paddingTop: 20,
   },
   imageCard: {
-  backgroundColor: "#000000e8",
+    backgroundColor: "#000000e8",
     borderRadius: 24,
     padding: 20,
     height: width * 0.55,
     justifyContent: "space-between",
     marginBottom: 25,
+    paddingBottom: s(40),
   },
   cardTitle: {
     color: "#FFF",
@@ -142,7 +142,7 @@ const styles = StyleSheet.create({
   },
   image: {
     width: "100%",
-    height: "65%",
+    height: "90%",
     alignSelf: "center",
   },
   heading: {

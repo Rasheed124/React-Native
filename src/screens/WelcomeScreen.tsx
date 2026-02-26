@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
 import {
   View,
@@ -14,6 +15,9 @@ import { s, vs } from "react-native-size-matters";
 const { width } = Dimensions.get("window");
 
 const WelcomeScreen = () => {
+  const navigation = useNavigation();
+    
+
   return (
     <View style={styles.container}>
       <StatusBar barStyle="dark-content" />
@@ -47,7 +51,7 @@ const WelcomeScreen = () => {
           <Text style={styles.primaryButtonText}>Get Started</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity activeOpacity={0.7}>
+        <TouchableOpacity activeOpacity={0.7} onPress={() =>  navigation.navigate('')} >
           <Text style={styles.signInText}>
             Already have an account?{" "}
             <Text style={styles.signInBold}>Sign in</Text>

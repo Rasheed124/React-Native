@@ -13,7 +13,6 @@
 // } from "react-native";
 // import { s, vs } from "react-native-size-matters";
 
-
 import React, { useState } from "react";
 import {
   View,
@@ -28,6 +27,7 @@ import {
 import { vs } from "react-native-size-matters";
 import WelcomeScreen from "./src/screens/WelcomeScreen";
 import SignInScreen from "./src/screens/Login";
+import { NavigationContainer } from "@react-navigation/native";
 
 const { width } = Dimensions.get("window");
 
@@ -36,12 +36,14 @@ export default function App() {
 
   // console.log(bookList);
 
-return (
-    <View  style={styles.container}>
-      <StatusBar barStyle="dark-content" />
-        {/* <WelcomeScreen /> */}
-        <SignInScreen />
-    </View>
+  return (
+    <NavigationContainer>
+      <View style={styles.container}>
+        <StatusBar barStyle="dark-content" />
+        <WelcomeScreen />
+        {/* <SignInScreen /> */}
+      </View>
+    </NavigationContainer>
   );
 }
 
@@ -49,7 +51,5 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#FFF",
-    
   },
-
 });
