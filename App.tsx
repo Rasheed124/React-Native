@@ -28,6 +28,8 @@ import { vs } from "react-native-size-matters";
 import WelcomeScreen from "./src/screens/WelcomeScreen";
 import SignInScreen from "./src/screens/Login";
 import { NavigationContainer } from "@react-navigation/native";
+import { Provider } from "react-redux";
+import store from "./src/store/store";
 
 const { width } = Dimensions.get("window");
 
@@ -37,13 +39,15 @@ export default function App() {
   // console.log(bookList);
 
   return (
-    <NavigationContainer>
-      <View style={styles.container}>
-        <StatusBar barStyle="dark-content" />
-        <WelcomeScreen />
-        {/* <SignInScreen /> */}
-      </View>
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <View style={styles.container}>
+          <StatusBar barStyle="dark-content" />
+          {/* <WelcomeScreen /> */}
+          <SignInScreen />
+        </View>
+      </NavigationContainer>
+    </Provider>
   );
 }
 

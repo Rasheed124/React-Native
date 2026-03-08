@@ -11,12 +11,21 @@ import {
   Dimensions,
 } from "react-native";
 import { s, vs } from "react-native-size-matters";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  increaseTotalLikes,
+  increaseTotalLikesByAmount,
+} from "../store/actions/actions";
 
 const { width } = Dimensions.get("window");
 
 const WelcomeScreen = () => {
   const navigation = useNavigation();
-    
+
+  const totalLikes = useSelector((state) => state.totalLikes);
+  const userName = useSelector((state) => state.name);
+
+  const dispatch = useDispatch();
 
   return (
     <View style={styles.container}>
@@ -29,15 +38,16 @@ const WelcomeScreen = () => {
 
           {/* Replace with your actual image */}
           <Image
-             source={require("../../assets/login-bg.png")}
-             style={styles.image}
-             resizeMode="contain"
-           />
+            source={require("../../assets/login-bg.png")}
+            style={styles.image}
+            resizeMode="contain"
+          />
         </View>
 
         {/* Text Section */}
         <View style={styles.textSection}>
-          <Text style={styles.heading}>Productive Mind</Text>
+          <Text style={styles.heading}>{userName}</Text>
+          <Text>Current Likes {totalLikes}</Text>
 
           <Text style={styles.description}>
             With only the features you need, Organic Mind is customized for
@@ -47,16 +57,30 @@ const WelcomeScreen = () => {
         </View>
 
         {/* Button Section */}
-        <TouchableOpacity style={styles.primaryButton} activeOpacity={0.8}>
-          <Text style={styles.primaryButtonText}>Get Started</Text>
+        <TouchableOpacity
+          onPress={() => dispatch(increaseTotalLikes())}
+          style={styles.primaryButton}
+          activeOpacity={0.8}
+        >
+          <Text style={styles.primaryButtonText}>Increase Likes</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => dispatch(increaseTotalLikesByAmount(50))}
+          style={styles.primaryButton}
+          activeOpacity={0.8}
+        >
+          <Text style={styles.primaryButtonText}>Increase Likes By Amount</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity activeOpacity={0.7} onPress={() =>  navigation.navigate('')} >
+        {/* <TouchableOpacity
+          activeOpacity={0.7}
+          onPress={() => navigation.navigate("")}
+        >
           <Text style={styles.signInText}>
             Already have an account?{" "}
             <Text style={styles.signInBold}>Sign in</Text>
           </Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
     </View>
   );
