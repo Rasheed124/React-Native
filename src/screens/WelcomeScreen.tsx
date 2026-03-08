@@ -1,4 +1,4 @@
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import React, { useState } from "react";
 import {
   View,
@@ -12,18 +12,15 @@ import {
 } from "react-native";
 import { s, vs } from "react-native-size-matters";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  increaseTotalLikes,
-  increaseTotalLikesByAmount,
-} from "../store/actions/actions";
+import { increaseTotalLikesByOne } from "../store/reducer/dataReducer";
+
+// import { RootState } from "../store/store";
 
 const { width } = Dimensions.get("window");
 
 const WelcomeScreen = () => {
   const navigation = useNavigation();
-
-  const totalLikes = useSelector((state) => state.totalLikes);
-  const userName = useSelector((state) => state.name);
+  const totalLikes = useSelector((state) => state.dataReducer.totalLikes)
 
   const dispatch = useDispatch();
 
@@ -34,7 +31,7 @@ const WelcomeScreen = () => {
       <View style={styles.content}>
         {/* Card Image Section */}
         <View style={styles.imageCard}>
-          <Text style={styles.cardTitle}>Organic{"\n"}Mind</Text>
+          {/* <Text style={styles.cardTitle}>Role : {userRole}</Text> */}
 
           {/* Replace with your actual image */}
           <Image
@@ -46,7 +43,7 @@ const WelcomeScreen = () => {
 
         {/* Text Section */}
         <View style={styles.textSection}>
-          <Text style={styles.heading}>{userName}</Text>
+          <Text style={styles.heading}>{}</Text>
           <Text>Current Likes {totalLikes}</Text>
 
           <Text style={styles.description}>
@@ -58,18 +55,18 @@ const WelcomeScreen = () => {
 
         {/* Button Section */}
         <TouchableOpacity
-          onPress={() => dispatch(increaseTotalLikes())}
+          onPress={() => dispatch(increaseTotalLikesByOne())}
           style={styles.primaryButton}
           activeOpacity={0.8}
         >
           <Text style={styles.primaryButtonText}>Increase Likes</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => dispatch(increaseTotalLikesByAmount(50))}
+          // onPress={() => dispatch(setRole('User'))}
           style={styles.primaryButton}
           activeOpacity={0.8}
         >
-          <Text style={styles.primaryButtonText}>Increase Likes By Amount</Text>
+          <Text style={styles.primaryButtonText}>Switch to User</Text>
         </TouchableOpacity>
 
         {/* <TouchableOpacity

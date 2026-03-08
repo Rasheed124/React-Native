@@ -29,7 +29,7 @@ import WelcomeScreen from "./src/screens/WelcomeScreen";
 import SignInScreen from "./src/screens/Login";
 import { NavigationContainer } from "@react-navigation/native";
 import { Provider } from "react-redux";
-import store from "./src/store/store";
+import { store } from "./src/store/store";
 
 const { width } = Dimensions.get("window");
 
@@ -43,8 +43,8 @@ export default function App() {
       <NavigationContainer>
         <View style={styles.container}>
           <StatusBar barStyle="dark-content" />
-          {/* <WelcomeScreen /> */}
-          <SignInScreen />
+          <WelcomeScreen />
+          {/* <SignInScreen /> */}
         </View>
       </NavigationContainer>
     </Provider>

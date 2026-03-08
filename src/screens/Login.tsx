@@ -13,7 +13,6 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 import { s, vs } from "react-native-size-matters";
 import { useSelector } from "react-redux";
-import { datareducer } from "../store/reducer/dataReducer";
 
 const { width } = Dimensions.get("window");
 
@@ -22,7 +21,6 @@ const SignInScreen = () => {
   const [password, setPassword] = useState("");
   const [secure, setSecure] = useState(true);
 
-  const totalLikes =  useSelector(state => state.totalLikes);
 
   //   const navigation = useNavi
 
@@ -43,7 +41,7 @@ const SignInScreen = () => {
         </View>
 
         {/* Title */}
-        <Text style={styles.heading}>Sign in {totalLikes}</Text>
+        <Text style={styles.heading}>Sign in</Text>
 
         {/* Email Input */}
         <View style={styles.inputContainer}>
