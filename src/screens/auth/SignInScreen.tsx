@@ -1,13 +1,13 @@
-import { StyleSheet, Text, Image } from "react-native";
+import { StyleSheet, Image } from "react-native";
 import React, { useState } from "react";
-import AppSaveView from "../../components/views/AppSaveView";
 import { sharedPaddingHorizontal } from "../../styles/sharedStyles";
 import { IMAGES } from "../../constants/images-paths";
 import { s, vs } from "react-native-size-matters";
 import AppTextInput from "../../components/inputs/AppTextInput";
 import AppText from "../../components/texts/AppText";
-import AppButton from "../../components/buttons/AppButton";
-import { AppColors } from "../../styles/colors";
+import AppSaveView from "../../components/view/AppSaveView";
+import AppButton from "../../components/buttons/AppButtons";
+import { AppColors } from "../../styles/color";
 
 const SignInScreen = () => {
   const [email, setEmail] = useState("");
