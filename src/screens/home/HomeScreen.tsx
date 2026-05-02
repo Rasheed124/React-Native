@@ -1,16 +1,29 @@
 import { FlatList, StyleSheet, Text, View } from "react-native";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import AppSaveView from "../../components/views/AppSaveView";
 import HomeHeader from "../../components/headers/HomeHeader";
 import { AppFonts } from "../../styles/fonts";
 import ProductCard from "../../components/cards/ProductCard";
-import { products } from "../../data/products";
+
 import { s, vs } from "react-native-size-matters";
-import { addItemToCart } from "../../store/reducers/CartSlice";
 import { useDispatch } from "react-redux";
+import { getProductsData } from "../../config/dataServices";
+import { addItemToCart } from "../../store/reducers/CartSlice";
 
 const HomeScreen = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
+  const [products, setProducts] = useState([])
+
+  const fetchData = async () => {
+    const data = await getProductsData() 
+    console.log(data);
+    setProducts(data)
+  }
+
+  useEffect(() => {
+    fetchData()
+  }, [])
+
 
   return (
     <AppSaveView>
@@ -24,9 +37,7 @@ const HomeScreen = () => {
             imageURL={item.imageURL}
             title={item.title}
             price={item.price}
-            onAddToCartPress={() => {
-              dispatch(addItemToCart(item));
-            }}
+            onAddToCartPress={() => {dispatch(addItemToCart(item))}}
           />
         )}
         columnWrapperStyle={{
