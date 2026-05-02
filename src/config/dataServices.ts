@@ -23,7 +23,7 @@ export const getProductsData = async () => {
 
 export const fetchUserOrders = async () => {
     try {
-        const userIdFromRedux = store.getState().userSlice.userData.uid
+        const userIdFromRedux = store.getState().UserSlice.userData.uid
         const userIdFromFireBase = auth.currentUser?.uid
 
         const userOrdersRef = collection(doc(db, "users", userIdFromFireBase), "orders")

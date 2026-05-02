@@ -18,6 +18,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../config/firebase";
 import { showMessage } from "react-native-flash-message";
+import { useDispatch } from "react-redux";
+import { setUserData } from "../../store/reducers/UserSlice";
 
 // 2- Make schema
 const schema = yup
@@ -44,6 +46,8 @@ const SignInScreen = () => {
 
   const navigation = useNavigation();
 
+  const dispatch = useDispatch()
+
   const onLoginPress = async (data: FormData) => {
 
     console.log(data);
@@ -55,8 +59,13 @@ const SignInScreen = () => {
         data.password
       )
       navigation.navigate("MainAppBottomTabs")
-      console.log(userCredential);
-      
+      console.log(JSON.stringify(userCredential, null, 3));
+
+      const userDataObj = {
+        uid: userCredential.user.uid
+      }
+
+      dispatch(setUserData(userDataObj))
     } catch (error: any) {
       let errorMessage = ""
       console.log(error.code)

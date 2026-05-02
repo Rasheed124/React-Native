@@ -18,6 +18,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../config/firebase";
 import { showMessage } from "react-native-flash-message";
+import { useDispatch } from "react-redux";
+import { setUserData } from "../../store/reducers/UserSlice";
 
 const schema = yup
   .object({
@@ -41,37 +43,41 @@ const SignUpScreen = () => {
   });
 
   const navigation = useNavigation();
+  const dispatch = useDispatch();
 
   const onSignUpPress = async (data: FormData) => {
-
     try {
-
       const userCredential = await createUserWithEmailAndPassword(
         auth,
         data.email,
         data.password
-      )
+      );
 
       Alert.alert("User Created");
       navigation.navigate("MainAppBottomTabs");
-      return userCredential.user
+
+      const userDataObj = {
+        uid: userCredential.user.uid,
+      };
+
+      dispatch(setUserData(userDataObj));
     } catch (error: any) {
-        let errorMessage = ""
+      let errorMessage = "";
 
-        if (error.code === "auth/email-already-in-use") {
-          errorMessage = "This email is already in use! you can't use this email";
-        } else if (error.code === "auth/invalid-email") {
-          errorMessage = "The email address is invalid.";
-        } else if (error.code === "auth/weak-password") {
-          errorMessage = "The password is too weak.";
-        } else {
-          errorMessage = "An error occurred during sign-up.";
-        }
+      if (error.code === "auth/email-already-in-use") {
+        errorMessage = "This email is already in use! you can't use this email";
+      } else if (error.code === "auth/invalid-email") {
+        errorMessage = "The email address is invalid.";
+      } else if (error.code === "auth/weak-password") {
+        errorMessage = "The password is too weak.";
+      } else {
+        errorMessage = "An error occurred during sign-up.";
+      }
 
-        showMessage({
-          type: "danger",
-          message: errorMessage
-        })
+      showMessage({
+        type: "danger",
+        message: errorMessage,
+      });
     }
   };
 
