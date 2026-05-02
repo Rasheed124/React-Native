@@ -6,8 +6,12 @@ import { AppFonts } from "../../styles/fonts";
 import ProductCard from "../../components/cards/ProductCard";
 import { products } from "../../data/products";
 import { s, vs } from "react-native-size-matters";
+import { addItemToCart } from "../../store/reducers/CartSlice";
+import { useDispatch } from "react-redux";
 
 const HomeScreen = () => {
+  const dispatch = useDispatch();
+
   return (
     <AppSaveView>
       <HomeHeader />
@@ -20,7 +24,9 @@ const HomeScreen = () => {
             imageURL={item.imageURL}
             title={item.title}
             price={item.price}
-            onAddToCartPress={() => {}}
+            onAddToCartPress={() => {
+              dispatch(addItemToCart(item));
+            }}
           />
         )}
         columnWrapperStyle={{

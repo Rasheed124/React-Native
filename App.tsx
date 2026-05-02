@@ -4,6 +4,8 @@ import { NavigationContainer } from "@react-navigation/native";
 import MainAppStack from "./src/navigation/MainAppStack";
 import FlashMessage from "react-native-flash-message";
 import { useFonts } from "expo-font";
+import { Provider } from "react-redux";
+import { store } from "./src/store/store";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -16,11 +18,12 @@ export default function App() {
   }
   return (
     <>
-      <NavigationContainer>
-        <FlashMessage position={"top"} />
-
-        <MainAppStack />
-      </NavigationContainer>
+      <Provider store={store}>
+        <NavigationContainer>
+          <FlashMessage position={"top"} />
+          <MainAppStack />
+        </NavigationContainer>
+      </Provider>
     </>
   );
 }
